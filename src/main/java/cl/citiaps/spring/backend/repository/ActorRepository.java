@@ -6,7 +6,5 @@ import cl.citiaps.spring.backend.entities.Actor;
 
 public interface ActorRepository extends PagingAndSortingRepository<Actor, Integer> {
 	
-	
-	
 
 }
