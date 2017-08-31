@@ -2,7 +2,11 @@ package cl.citiaps.spring.backend.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,7 +15,23 @@ import java.util.Set;
 public class Film implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
+	//AGREGADO
+	@ManyToMany(cascade = {CascadeType.ALL})
+	@JsonIgnoreProperties(ignoreUnknown = true)
+	private Set<Actor> actors=new HashSet<Actor>();
+	
+	public Set<Actor> getActors() {
+		return actors;
+	}
 
+	public void setActors(Set<Actor> actors) {
+		this.actors = actors;
+	}
+	
+	//FIN AGREGADO
+
+	
 
 	@Id
 	@Column(name="film_id", unique=true, nullable=false)
