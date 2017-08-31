@@ -11,14 +11,15 @@ public class Film implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+
 	@Id
 	@Column(name="film_id", unique=true, nullable=false)
 	private int filmId;
 
-	@Column(name="title", nullable=false, length=45)
+	@Column(name="title", nullable=false, length=255)
 	private String title;
 
-	@Column(name="description", nullable=true, length=45)
+	@Column(name="description", nullable=true)
 	private String description;
 
 	@Column(name="release_year", nullable=true)
@@ -36,7 +37,7 @@ public class Film implements Serializable {
 	@Column(name="rental_rate", nullable=false)
 	private float rentalRate;
 	
-	@Column(name="lenght", nullable=true)
+	@Column(name="length", nullable=true)
 	private int lenght;
 	
 	@Column(name="replacement_cost", nullable=false)
@@ -53,107 +54,107 @@ public class Film implements Serializable {
 
 	public Film() {
 	}
-	
+
 	public int getFilmId() {
-		return this.filmId;
+		return filmId;
 	}
-	
-	public void setFilmId(int filmId)
-	{
+
+	public void setFilmId(int filmId) {
 		this.filmId = filmId;
 	}
 
-	public String getTitle(){
-		return this.title;
+	public String getTitle() {
+		return title;
 	}
-	
-	public void setTitle(String title)
-	{
+
+	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	public String getDescription(){
-		return this.description;
+
+	public String getDescription() {
+		return description;
 	}
-	
-	public void setDescription(String description)
-	{
+
+	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public int getReleaseYear(){
-		return this.releaseYear;
+
+	public int getReleaseYear() {
+		return releaseYear;
 	}
-	
-	public void setReleaseYear(int releaseYear)
-	{
+
+	public void setReleaseYear(int releaseYear) {
 		this.releaseYear = releaseYear;
 	}
-	
-	public int getLanguageId(){
-		return this.languageId;
+
+	public int getLanguageId() {
+		return languageId;
 	}
-	public void setLanguageId(int languageId)
-	{
+
+	public void setLanguageId(int languageId) {
 		this.languageId = languageId;
 	}
-	public int getOriginalLanguageId(){
-		return this.originalLanguageId;
+
+	public int getOriginalLanguageId() {
+		return originalLanguageId;
 	}
-	public void setOriginalLanguageId(int originalLanguageId)
-	{
+
+	public void setOriginalLanguageId(int originalLanguageId) {
 		this.originalLanguageId = originalLanguageId;
 	}
-	public int getRentalDuration(){
-		return this.rentalDuration;
+
+	public int getRentalDuration() {
+		return rentalDuration;
 	}
-	public void setRentalDuration(int rentalDuration)
-	{
+
+	public void setRentalDuration(int rentalDuration) {
 		this.rentalDuration = rentalDuration;
 	}
-	
-	public float getRentalRate(){
-		return this.rentalRate;
+
+	public float getRentalRate() {
+		return rentalRate;
 	}
-	
-	public void setRentalRate(float rentalRate)
-	{
+
+	public void setRentalRate(float rentalRate) {
 		this.rentalRate = rentalRate;
 	}
 
-	public int getLenght(){
-		return this.lenght;
+	public int getLenght() {
+		return lenght;
 	}
-	
-	public void setLenght(int lenght)
-	{
+
+	public void setLenght(int lenght) {
 		this.lenght = lenght;
 	}
-	
-	public float getReplacementCost(){
-		return this.replacementCost;
+
+	public float getReplacementCost() {
+		return replacementCost;
 	}
-	public void setReplacementCost(float replacementCost)
-	{
+
+	public void setReplacementCost(float replacementCost) {
 		this.replacementCost = replacementCost;
 	}
-	public String getRating(){
-		return this.rating;
+
+	public String getRating() {
+		return rating;
 	}
-	public void setRating(String rating)
-	{
+
+	public void setRating(String rating) {
 		this.rating = rating;
 	}
-	public String getSpecialFeatures(){
-		return this.specialFeatures;
+
+	public String getSpecialFeatures() {
+		return specialFeatures;
 	}
-	public void setSpecialFeatures(String specialFeatures)
-	{
+
+	public void setSpecialFeatures(String specialFeatures) {
 		this.specialFeatures = specialFeatures;
 	}
+
 	public Timestamp getLastUpdate() {
-		return this.lastUpdate;
+		return lastUpdate;
 	}
+
 	public void setLastUpdate(Timestamp lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
