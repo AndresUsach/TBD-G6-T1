@@ -33,6 +33,7 @@ public class Actor implements Serializable {
 	@Column(name="last_update", nullable=false)
 	private Timestamp lastUpdate;
 	
+	/*
 	//AGREGADO
 	@ManyToMany(cascade = {CascadeType.ALL})
 	@JsonIgnoreProperties(ignoreUnknown = true)
@@ -50,6 +51,7 @@ public class Actor implements Serializable {
 	}
 	
 	//FIN AGREGADO
+	 */
 
 	
 

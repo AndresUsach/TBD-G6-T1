@@ -16,6 +16,8 @@ public class Film implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	
+	/*
 	//AGREGADO
 	@ManyToMany(cascade = {CascadeType.ALL})
 	@JsonIgnoreProperties(ignoreUnknown = true)
@@ -30,7 +32,7 @@ public class Film implements Serializable {
 	}
 	
 	//FIN AGREGADO
-
+	*/
 	
 
 	@Id

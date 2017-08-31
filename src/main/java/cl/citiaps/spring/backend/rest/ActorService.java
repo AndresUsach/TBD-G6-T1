@@ -35,12 +35,13 @@ public class ActorService {
 		return actorRepository.findOne(id);
 	}
 	
+	/*
 	@RequestMapping(value = "/{id}/films", method = RequestMethod.GET)
 	@ResponseBody
 	public  Actor getFilms(@PathVariable("id") Integer id) {
 		return actorRepository.findOne(id);
 	}
-	
+	*/
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
