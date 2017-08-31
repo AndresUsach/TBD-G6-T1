@@ -3,6 +3,7 @@ package cl.citiaps.spring.backend.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 
 /**
@@ -27,6 +28,11 @@ public class Actor implements Serializable {
 
 	@Column(name="last_update", nullable=false)
 	private Timestamp lastUpdate;
+	
+	@OneToMany(mappedBy = "actor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<FilmActor> filmActor;
+	
+	//private Set<Film> films;
 
 	public Actor() {
 	}
@@ -62,5 +68,25 @@ public class Actor implements Serializable {
 	public void setLastUpdate(Timestamp lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
+
+	public Set<FilmActor> getFilmActor() {
+		return filmActor;
+	}
+
+	public void setFilmActor(Set<FilmActor> filmActor) {
+		this.filmActor = filmActor;
+	}
+	
+	/*
+	@ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "film_actor", joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "actor_id"), inverseJoinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"))
+    public Set<Film> getFilms() {
+        return films;
+    }
+
+    public void setPublishers(Set<Film> films) {
+        this.films = films;
+    }
+    */
 
 }

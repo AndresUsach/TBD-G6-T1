@@ -32,7 +32,7 @@ public class Film implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "language_id")
-    private Language language;
+    private Language languageId;
 	/*
 	@Column(name="original_language_id", nullable=true)
 	private int originalLanguageId;
@@ -62,6 +62,11 @@ public class Film implements Serializable {
 	
 	@Column(name="last_update", nullable=false)
 	private Timestamp lastUpdate;
+	
+	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<FilmActor> filmActor;
+	
+	//private Set<Actor> actors;
 
 	public Film() {
 	}
@@ -98,17 +103,13 @@ public class Film implements Serializable {
 		this.releaseYear = releaseYear;
 	}
 
-
-
-	public Language getLanguage() {
-		return language;
+	public Language getLanguageId() {
+		return languageId;
 	}
 
-	public void setLanguage(Language language) {
-		this.language = language;
+	public void setLanguage(Language languageId) {
+		this.languageId = languageId;
 	}
-
-
 
 	public Language getOriginalLanguageId() {
 		return originalLanguageId;
@@ -173,5 +174,30 @@ public class Film implements Serializable {
 	public void setLastUpdate(Timestamp lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
+
+	public Set<FilmActor> getFilmActor() {
+		return filmActor;
+	}
+
+	public void setFilmActor(Set<FilmActor> filmActor) {
+		this.filmActor = filmActor;
+	}
+
+	public void setLanguageId(Language languageId) {
+		this.languageId = languageId;
+	}
+	
+	
+	
+	/*
+	@ManyToMany(mappedBy = "film")
+    public Set<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(Set<Actor> actors) {
+        this.actors = actors;
+    }
+    */
 	
 }

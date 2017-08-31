@@ -1,10 +1,7 @@
 package cl.citiaps.spring.backend.rest;
 
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,45 +9,35 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.citiaps.spring.backend.entities.Actor;
-import cl.citiaps.spring.backend.entities.Film;
-import cl.citiaps.spring.backend.repository.ActorRepository;
+import cl.citiaps.spring.backend.entities.FilmActor;
+import cl.citiaps.spring.backend.repository.FilmActorRepository;
 
 @RestController  
-@RequestMapping("/actors")
-public class ActorService {
+@RequestMapping("/filmactor")
+public class FilmActorService {
 	
 	@Autowired
-	private ActorRepository actorRepository;
-
+	private FilmActorRepository filmActorRepository;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
-	public Iterable<Actor> getAllUsers() {
-		return actorRepository.findAll();
+	public Iterable<FilmActor> getAllUsers() {
+		return filmActorRepository.findAll();
 	}
 	
+	/*
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public  Actor findOne(@PathVariable("id") Integer id) {
-		return actorRepository.findOne(id);
+		return filmActorRepository.findOne(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
-	public Actor create(@RequestBody Actor resource) {
-	     return actorRepository.save(resource);
-	}
-	/*
-	@RequestMapping(value = "/{id}/films", method = RequestMethod.GET)
-	@ResponseBody
-	public  Set<Film> findFilm(@PathVariable("id") Integer id) {
-		int idActor = actorRepository.findOne(id).getActorId();
-		Actor act = new Actor();
-		act = actorRepository.findOne(idActor);
-		return act.getFilms();
+	public FilmActor create(@RequestBody FilmActor resource) {
+	     return filmActorRepository.save(resource);
 	}
 	*/
-	
-	 
+
 }
