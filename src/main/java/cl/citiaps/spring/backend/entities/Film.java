@@ -3,6 +3,7 @@ package cl.citiaps.spring.backend.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name="film")
@@ -24,12 +25,22 @@ public class Film implements Serializable {
 
 	@Column(name="release_year", nullable=true)
 	private int releaseYear;
-	
+	/*
 	@Column(name="language_id", nullable=false)
 	private int languageId;
+	*/
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "language_id")
+    private Language language;
+	/*
 	@Column(name="original_language_id", nullable=true)
 	private int originalLanguageId;
+	*/
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "original_language_id")
+    private Language originalLanguageId;
 	
 	@Column(name="rental_duration", nullable=false)
 	private int rentalDuration;
@@ -87,19 +98,23 @@ public class Film implements Serializable {
 		this.releaseYear = releaseYear;
 	}
 
-	public int getLanguageId() {
-		return languageId;
+
+
+	public Language getLanguage() {
+		return language;
 	}
 
-	public void setLanguageId(int languageId) {
-		this.languageId = languageId;
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 
-	public int getOriginalLanguageId() {
+
+
+	public Language getOriginalLanguageId() {
 		return originalLanguageId;
 	}
 
-	public void setOriginalLanguageId(int originalLanguageId) {
+	public void setOriginalLanguageId(Language originalLanguageId) {
 		this.originalLanguageId = originalLanguageId;
 	}
 

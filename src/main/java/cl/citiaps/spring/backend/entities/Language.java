@@ -2,11 +2,17 @@ package cl.citiaps.spring.backend.entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +31,9 @@ public class Language implements Serializable{
 	
 	@Column(name="last_update", nullable=false)
 	private Timestamp lastUpdate;
+	
+	@OneToMany(mappedBy = "language", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Film> films;
 	
 	public Language(){
 		
