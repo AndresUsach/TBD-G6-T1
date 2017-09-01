@@ -18,7 +18,7 @@ public class Film implements Serializable {
 	
 	
 	//AGREGADO
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(cascade = {CascadeType.ALL},mappedBy="films")
 	@JsonIgnore
 	private Set<Actor> actors=new HashSet<Actor>();
 	
@@ -31,7 +31,21 @@ public class Film implements Serializable {
 	}
 	
 	//FIN AGREGADO
-	 
+	
+	
+	/*
+	//SEGUNDA OPCION
+	private Set<Actor> actors;
+	@ManyToMany(mappedBy = "film")
+    public Set<Actor> getActors() {
+        return this.actors;
+    }
+
+    public void setActors(Set<Actor> actors) {
+        this.actors = actors;
+    }
+	//FIN SEGUNDA OPCION
+	*/
 	
 
 	@Id

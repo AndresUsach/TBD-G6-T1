@@ -50,6 +50,22 @@ public class Actor implements Serializable {
 	}
 	
 	//FIN AGREGADO
+	
+	
+	/*
+	//SEGUNDA OPCION
+	private Set<Film> films;
+	@ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "film_actor", joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "actorId"), 
+    		inverseJoinColumns = @JoinColumn(name = "film_id", referencedColumnName = "filmId"))
+    public Set<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Set<Film> films) {
+        this.films = films;
+    }
+    //FIN SEGUNDA OPCION*/
 	 
 	 
 
