@@ -35,12 +35,13 @@ public class ActorService {
 		return actorRepository.findOne(id);
 	}
 	
-	
+	//METODO AGREGADO!
 	@RequestMapping(value = "/{id}/films", method = RequestMethod.GET)
 	@ResponseBody
-	public  Set<Film> getFilms(@PathVariable("id") Integer id) {
+	public  Set<Film> findFilms(@PathVariable("id") Integer id) {
 		return actorRepository.findOne(id).getFilms();
 	}	
+	// FIN METODO AGERGADO!
 	
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
