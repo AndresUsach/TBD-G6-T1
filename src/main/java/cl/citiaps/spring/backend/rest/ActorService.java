@@ -56,12 +56,22 @@ public class ActorService {
 		@RequestMapping(value = "/{actorId}/films/{filmId}",method = RequestMethod.POST)
 		@ResponseStatus(HttpStatus.CREATED)
 		@ResponseBody
-		public Actor match(@PathVariable("actorId") Integer actorId,@PathVariable("filmId") Integer filmId) {
+		public ResponseEntity<Set<Film>> match(@PathVariable("actorId") Integer actorId,@PathVariable("filmId") Integer filmId) {
 			Actor actor = actorRepository.findOne(actorId);
-			Set<Film> films = actor.getFilms();
-			films.add(filmRepository.findOne(filmId));
-			actor.setFilms(films);
-			return actorRepository.save(actor);
+			Film film = filmRepository.findOne(filmId);
+			if (film == null || actor == null ){
+				
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+			else{
+				Set<Film> films = actor.getFilms();
+				films.add(film);
+				actor.setFilms(films);
+				actorRepository.save(actor);
+				return new ResponseEntity<Set<Film>>(actorRepository.findOne(actorId).getFilms();, HttpStatus.OK);
+
+			}
+			
 		}
 	//FIN METODO POST AGREGADO!
 	
