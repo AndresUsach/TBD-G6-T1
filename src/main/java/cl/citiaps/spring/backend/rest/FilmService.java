@@ -78,15 +78,17 @@ public class FilmService {
 	public ResponseEntity<Set<Actor>> match(@PathVariable("filmId") Integer filmId,@PathVariable("actorId") Integer actorId) {
 		
 		Actor actor = actorRepository.findOne(actorId);
-		if (actor != null){
+		Film film = filmRepository.findOne(filmId);
+		if (actor == null || film == null){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		else{
+			
 			Set<Film> films = actor.getFilms();
-			films.add(filmRepository.findOne(filmId));
+			films.add(film);
 			actor.setFilms(films);
 			actorRepository.save(actor);
 			return new ResponseEntity<Set<Actor>>(filmRepository.findOne(filmId).getActors(), HttpStatus.OK);
-		}
-		else{
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);	
 		}
 		
 	}
