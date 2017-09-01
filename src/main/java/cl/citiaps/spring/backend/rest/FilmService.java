@@ -56,11 +56,12 @@ public class FilmService {
 	}
 	//FIN METODO POST AGREGADO!
 	
+	/*
 	//METODO POST AGREGADO!
 			@RequestMapping(value = "/{filmId}/actors/{actorId}",method = RequestMethod.POST)
 			@ResponseStatus(HttpStatus.CREATED)
 			@ResponseBody
-			public Film match(@PathVariable("actorId") Integer actorId,@PathVariable("filmId") Integer filmId) {
+			public Film match(@PathVariable("filmId") Integer filmId,@PathVariable("actorId") Integer actorId) {
 				Film film = filmRepository.findOne(filmId);
 				Set<Actor> actors = film.getActors();
 				actors.add(actorRepository.findOne(actorId));
@@ -68,5 +69,21 @@ public class FilmService {
 				return filmRepository.save(film);
 			}
 		//FIN METODO POST AGREGADO!
+	*/
+	
+	@RequestMapping(value = "/{filmId}/actors/{actorId}",method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	@ResponseBody
+	public Film match(@PathVariable("filmId") Integer filmId,@PathVariable("actorId") Integer actorId) {
+		Actor actor = actorRepository.findOne(actorId);
+		Set<Film> films = actor.getFilms();
+		films.add(filmRepository.findOne(filmId));
+		actor.setFilms(films);
+		actorRepository.save(actor);
+		return filmRepository.findOne(filmId);
+	}
+	
+	
+		 
 
 }
