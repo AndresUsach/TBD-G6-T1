@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,7 +69,7 @@ public class ActorService {
 				films.add(film);
 				actor.setFilms(films);
 				actorRepository.save(actor);
-				return new ResponseEntity<Set<Film>>(actorRepository.findOne(actorId).getFilms();, HttpStatus.OK);
+				return new ResponseEntity<Set<Film>>(actorRepository.findOne(actorId).getFilms(), HttpStatus.OK);
 
 			}
 			
