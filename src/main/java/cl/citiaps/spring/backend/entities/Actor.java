@@ -3,8 +3,7 @@ package cl.citiaps.spring.backend.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
@@ -33,10 +32,10 @@ public class Actor implements Serializable {
 	@Column(name="last_update", nullable=false)
 	private Timestamp lastUpdate;
 	
-	/*
+	
 	//AGREGADO
 	@ManyToMany(cascade = {CascadeType.ALL})
-	@JsonIgnoreProperties(ignoreUnknown = true)
+	@JsonIgnore
 	@JoinTable(name="film_actor", 
 		joinColumns={@JoinColumn(name="actor_id")}, 
 		inverseJoinColumns={@JoinColumn(name="film_id")})
@@ -51,7 +50,8 @@ public class Actor implements Serializable {
 	}
 	
 	//FIN AGREGADO
-	 */
+	 
+	 
 
 	
 
